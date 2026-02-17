@@ -1,1 +1,25 @@
+name: PySpark CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: pip install pyspark
+
+      - name: Run Basic Script
+        run: python pyspark_basics/code.py
 
